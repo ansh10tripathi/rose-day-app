@@ -1,0 +1,377 @@
+body {
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background: #fff;
+    padding: 32px 34px;   /* ⬅️ slightly tighter */
+    border-radius: 20px;
+    width: 360px;         /* ⬅️ slightly narrower */
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+
+    position: relative;
+}
+
+
+h1 {
+    color: #d6336c;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+}
+
+textarea {
+    resize: none;
+    height: 90px;
+}
+
+button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #d6336c;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #b02558;
+}
+
+.rose-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.message-box {
+    background: #fff0f5;
+    padding: 14px 18px;
+    border-radius: 14px;
+    margin: 20px auto 0 auto;   /* center it */
+    font-size: 15px;
+    color: #444;
+    width: 88%;                 /* space on both sides */
+    box-sizing: border-box;     /* prevents overflow */
+    word-wrap: break-word;
+    line-height: 1.5;
+
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+
+.hint {
+    font-size: 12px;
+    color: #888;
+    margin-top: 15px;
+}
+
+/* 🌹 Title with roses on both sides */
+/* 🌹 Top title with glow */
+.title-top {
+    font-size: 32px;
+    font-weight: 800;
+    color: #d6336c;
+    text-align: center;
+    margin-bottom: 6px;
+    line-height: 1.2;
+
+    /* ✨ Glow effect */
+    text-shadow:
+        0 0 6px rgba(214, 51, 108, 0.4),
+        0 0 12px rgba(214, 51, 108, 0.3),
+        0 0 18px rgba(214, 51, 108, 0.2);
+}
+
+/* 🌸 Name line */
+.name-bottom {
+    font-size: 22px;
+    color: #d6336c;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 💕 Floating hearts */
+.hearts {
+    position: fixed;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hearts span {
+    position: absolute;
+    bottom: 0;
+    font-size: 18px;
+    animation: floatUp 8s linear infinite;
+    opacity: 0.6;
+}
+
+.hearts span:nth-child(1) { left: 10%; animation-delay: 0s; }
+.hearts span:nth-child(2) { left: 30%; animation-delay: 2s; }
+.hearts span:nth-child(3) { left: 50%; animation-delay: 4s; }
+.hearts span:nth-child(4) { left: 70%; animation-delay: 1s; }
+.hearts span:nth-child(5) { left: 90%; animation-delay: 3s; }
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+    10% { opacity: 0.6; }
+    100% {
+        transform: translateY(-100vh) scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* 🌸 Rose bloom animation */
+.rose-bloom {
+    display: inline-block;
+    animation: bloom 2.5s ease-out forwards;
+}
+
+@keyframes bloom {
+    0% {
+        transform: scale(0.2) rotate(-20deg);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.2) rotate(5deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* 📱 Mobile responsiveness */
+@media (max-width: 480px) {
+    .card {
+        width: 90%;
+        padding: 25px;
+    }
+
+    .title-top {
+        font-size: 26px;
+    }
+
+    .name-bottom {
+        font-size: 20px;
+    }
+
+    .message-box {
+        font-size: 14px;
+        width: 95%;
+    }
+}
+
+/* ✍️ Typewriter cursor */
+#typewriter::after {
+    content: "|";
+    animation: blink 1s infinite;
+    margin-left: 4px;
+    color: #d6336c;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+
+/* 💌 Reveal button */
+.reveal-btn {
+    background: #d6336c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    animation: pulse 1.8s infinite;
+}
+
+.reveal-btn:hover {
+    background: #b02558;
+}
+
+/* ✨ Gentle pulse */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* 🌙 Theme toggle button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;   /* 👈 right corner */
+
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 50%;
+    padding: 10px 12px;
+
+    font-size: 20px;
+    cursor: pointer;
+
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+}
+
+/* 🌑 Dark mode background */
+body.dark-mode {
+    background: linear-gradient(135deg, #1f1c2c, #2a0845);
+}
+
+/* 🌑 Dark card */
+body.dark-mode .card {
+    background: #1e1e2e;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+/* 🌑 Dark mode refinement (override) */
+body.dark-mode .card {
+    background: #1f1f33;
+}
+
+/* 🌑 Dark message box */
+body.dark-mode .message-box {
+    background: #2b2b45;
+    color: #f5f5f5;
+    scrollbar-color: #ff9eb8 transparent;
+}
+
+
+
+/* 🌑 Dark text */
+body.dark-mode .title-top,
+body.dark-mode .name-bottom {
+    color: #ff9eb8;
+}
+
+/* 🌑 Dark reveal button */
+body.dark-mode .reveal-btn {
+    background: #ff5c8a;
+}
+
+body.dark-mode .reveal-btn:hover {
+    background: #e14b75;
+}
+
+/* 🌑 Dark cursor */
+body.dark-mode #typewriter::after {
+    color: #ff9eb8;
+}
+
+/* 🌗 Ultra-compact pill theme switch */
+.theme-switch {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+
+    width: 68px;
+    height: 26px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6px;
+    cursor: pointer;
+
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    z-index: 9999;
+}
+
+/* 🌫 Fade toggle on idle */
+.theme-switch.idle {
+    opacity: 0.25;
+    transition: opacity 0.4s ease;
+}
+
+.theme-switch {
+    transition: opacity 0.3s ease;
+}
+
+/* Icons */
+.theme-switch .icon {
+    font-size: 12px;
+    opacity: 0.5;
+    z-index: 2;
+}
+
+/* Knob */
+.switch-knob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+
+    width: 22px;
+    height: 22px;
+    background: #ffffff;
+    border-radius: 50%;
+
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* 🌙 Dark mode */
+body.dark-mode .theme-switch {
+    background: rgba(0,0,0,0.35);
+}
+
+body.dark-mode .switch-knob {
+    transform: translateX(38px);
+    background: #1e1e2e;
+}
+
+body.dark-mode .moon {
+    opacity: 1;
+}
+
+body.dark-mode .sun {
+    opacity: 0.3;
+}
+
+/* ☀️ Light mode */
+.theme-switch .sun {
+    opacity: 1;
+}
+
+.theme-switch .moon {
+    opacity: 0.3;
+}

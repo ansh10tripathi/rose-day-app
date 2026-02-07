@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send a Rose</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="card">
+    <h1>🌹 Send a Rose</h1>
+    <p class="subtitle">A beautiful gesture that blooms for 24 hours</p>
+
+    <form action="/create" method="post">
+        <label>For</label>
+        <input type="text" name="name" placeholder="Her Name" required>
+
+        <label>Your Message</label>
+        <textarea name="message" placeholder="Some messages don’t require any words"></textarea>
+
+        <button type="submit">✨ CREATE ROSE</button>
+    </form>
+</div>
+</body>
+</html>

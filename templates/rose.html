@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A Rose For You</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="theme-switch" id="themeToggle">
+        <span class="icon sun">☀️</span>
+        <span class="icon moon">🌙</span>
+        <div class="switch-knob"></div>
+    </div>
+
+<div class="card">
+    <div class="title-top">
+        🌹 <span class="title-text">A Rose For My Rose</span>
+    </div>
+
+    <div class="name-bottom">
+        {{ rose.name }} ❤️❤️🌹
+    </div>
+    <div class="message-box">
+        <button id="revealBtn" class="reveal-btn">
+            💌 Tap to Reveal
+        </button>
+
+        <span id="typewriter" style="display:none;"></span>
+    </div>
+
+
+
+    <!-- Hidden full message -->
+    <span id="fullMessage" style="display:none;">
+        {{ rose.message }}
+    </span>
+
+
+    <div class="hearts">
+        <span>❤️</span>
+        <span>💕</span>
+        <span>💖</span>
+        <span>💗</span>
+        <span>❤️</span>
+    </div>
+
+    <!-- <p class="hint">Some messages don’t require any words</p> -->
+</div>
+</body>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* 💌 TYPEWRITER + REVEAL */
+    const fullMessageEl = document.getElementById("fullMessage");
+    const target = document.getElementById("typewriter");
+    const revealBtn = document.getElementById("revealBtn");
+
+    let index = 0;
+    const speed = 40;
+
+    function typeEffect(text) {
+        if (index < text.length) {
+            target.innerHTML += text.charAt(index);
+            index++;
+
+            // 🔥 AUTO-SCROLL FIX
+            const box = document.querySelector(".message-box");
+            box.scrollTop = box.scrollHeight;
+
+            setTimeout(() => typeEffect(text), speed);
+        }
+    }
+
+    revealBtn.addEventListener("click", function () {
+        revealBtn.style.display = "none";
+        target.style.display = "inline";
+        target.innerHTML = "";
+        index = 0;
+
+        const text = fullMessageEl.innerText.trim();
+        typeEffect(text);
+    });
+
+    /* 🌗 PILL-STYLE LIGHT / DARK TOGGLE */
+    const toggle = document.getElementById("themeToggle");
+    const body = document.body;
+
+    // Restore saved theme
+    if (localStorage.getItem("theme") === "dark") {
+        body.classList.add("dark-mode");
+    }
+
+    toggle.addEventListener("click", function () {
+        body.classList.toggle("dark-mode");
+
+        if (body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
+        }
+    });
+
+    /* 🌫 Fade toggle on idle */
+    let idleTimer;
+    const fadeDelay = 3000; // 3 seconds
+
+    function setIdle() {
+        toggle.classList.add("idle");
+    }
+
+    function resetIdle() {
+        toggle.classList.remove("idle");
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(setIdle, fadeDelay);
+    }
+
+    // Start idle timer
+    idleTimer = setTimeout(setIdle, fadeDelay);
+
+    // Wake on interaction
+    ["mousemove", "scroll", "click", "touchstart"].forEach(event => {
+        window.addEventListener(event, resetIdle);
+    });
+
+});
+</script>
+
+</html>

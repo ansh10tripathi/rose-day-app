@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Share Your Rose</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="card">
+    <div class="rose-icon">🌹</div>
+
+    <h1>Your Rose is Ready</h1>
+    <p class="subtitle">Copy and share this link</p>
+
+    <input
+        type="text"
+        id="shareLink"
+        value="{{ link }}"
+        readonly
+        style="margin-top:15px;"
+    >
+
+    <button onclick="copyLink()">📋 Copy Link</button>
+
+    <p class="hint">Send this link to her ❤️</p>
+</div>
+
+<script>
+function copyLink() {
+    const input = document.getElementById("shareLink");
+    input.select();
+    document.execCommand("copy");
+    alert("Link copied! 🌹");
+}
+</script>
+</body>
+</html>
