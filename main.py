@@ -13,6 +13,10 @@ Base.metadata.create_all(bind=engine)
 # 👇 THIS IS WHAT UVICORN IS LOOKING FOR
 app = FastAPI()
 
+@app.get("/healthz")
+def health():
+    return {"status": "ok"}
+
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 

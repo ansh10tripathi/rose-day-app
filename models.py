@@ -9,3 +9,4 @@ class Rose(Base):
     id = Column(String, primary_key=True, index=True)
     name = Column(String)
     message = Column(Text)
+    
